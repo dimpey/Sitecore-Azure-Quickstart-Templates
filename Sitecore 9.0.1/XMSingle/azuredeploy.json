@@ -229,6 +229,14 @@
       "minLength": 8,
       "defaultValue": "[concat(toUpper(uniqueString('forms', parameters('passwordSalt'))), uniqueString('forms', parameters('sqlServerPassword'), parameters('passwordSalt')), toUpper(uniqueString('forms', parameters('sitecoreAdminPassword'), parameters('passwordSalt'))), '4@')]"
     },
+    "securityClientIp": {
+      "type": "string",
+      "defaultValue": "0.0.0.0"
+    },
+    "securityClientIpMask": {
+      "type": "string",
+      "defaultValue": "0.0.0.0"
+    },
 
     "telerikEncryptionKey": {
       "type": "securestring",
@@ -434,6 +442,12 @@
           "disablePrefetchCachingMsDeployPackageUrl": {
             "value": "[parameters('disablePrefetchCachingMsDeployPackageUrl')]"
           },
+          "securityClientIp": {
+            "value": "[parameters('securityClientIp')]"
+          },
+          "securityClientIpMask": {
+            "value": "[parameters('securityClientIpMask')]"
+          },
           
           "telerikEncryptionKey": {
             "value": "[parameters('telerikEncryptionKey')]"
@@ -503,6 +517,9 @@
 
               "singleHostingPlanName": "[parameters('singleHostingPlanName')]",
               "singleWebAppName": "[parameters('singleWebAppName')]",
+              
+              "securityClientIp": "[parameters('securityClientIp')]",
+              "securityClientIpMask": "[parameters('securityClientIpMask')]",
               
               "passwordSalt": "[parameters('passwordSalt')]"
             }
